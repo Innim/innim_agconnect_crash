@@ -1,3 +1,7 @@
+## [1.7.0] - 2023-04-21
+
+* null safety support.
+
 ## 1.6.0+300
 - **[Breaking Changes]**
   - Update version.
