@@ -1,0 +1,46 @@
+PODS:
+  - agconnect_crash (0.0.1):
+    - AGConnectCrash (= 1.7.2.150)
+    - Flutter
+    - HiAnalytics
+  - AGConnectCore (1.7.2.150):
+    - HMFoundation (~> 1.4)
+  - AGConnectCrash (1.7.2.150):
+    - AGConnectCredential (~> 1.4)
+  - AGConnectCredential (1.7.2.150):
+    - AGConnectCore (~> 1.4)
+  - Flutter (1.0.0)
+  - HiAnalytics (6.7.0.300):
+    - AGConnectCredential
+  - HMFoundation (1.7.2.150)
+
+DEPENDENCIES:
+  - agconnect_crash (from `.symlinks/plugins/agconnect_crash/ios`)
+  - Flutter (from `Flutter`)
+
+SPEC REPOS:
+  https://codehub-dg-g.huawei.com/AGC-iOS-Inner/Specs.git:
+    - AGConnectCore
+    - AGConnectCrash
+    - AGConnectCredential
+    - HiAnalytics
+    - HMFoundation
+
+EXTERNAL SOURCES:
+  agconnect_crash:
+    :path: ".symlinks/plugins/agconnect_crash/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  agconnect_crash: da43e4cea321d1fec3eff98b97ef4d8760384b76
+  AGConnectCore: 1168c388806b4fa477791b8dff0141567264677b
+  AGConnectCrash: 0b1052268b707e4a85533d50e9675a876cd5c205
+  AGConnectCredential: 9a2389ec861c9572cd9bdc885393c71a165bf6c7
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  HiAnalytics: 9e9d71c35ef134fb1643659218c54d9029c1319d
+  HMFoundation: 7dff6f69686c463c9e7afb68ac9fd99bab3748c1
+
+PODFILE CHECKSUM: c4cbaf1a0fc9068198154fe796efa3de10b93527
+
+COCOAPODS: 1.11.3

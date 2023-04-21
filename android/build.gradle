@@ -1,0 +1,42 @@
+group 'com.huawei.agconnectcrash'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 19
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    dependencies {
+        implementation  'com.huawei.agconnect:agconnect-crash:1.7.3.302'
+    }
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation:1.2.0'
+}
