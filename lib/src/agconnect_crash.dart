@@ -61,7 +61,6 @@ class AGCCrash {
 
   /// 设置自定义用户标识符
   Future<void> setUserId(String userId) {
-    assert(userId != null);
     return _channel.invokeMethod('setUserId', <String, String>{
       'userId': userId,
     });
