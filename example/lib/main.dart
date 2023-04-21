@@ -21,11 +21,11 @@ import 'package:agconnect_crash/agconnect_crash.dart';
 
 void main() {
   FlutterError.onError = AGCCrash.instance.onFlutterError;
-  runZoned<Future<void>>(
+  runZonedGuarded<Future<void>>(
     () async {
       runApp(MyApp());
     },
-    onError: (dynamic error, StackTrace stackTrace) {
+    (Object error, StackTrace stackTrace) {
       AGCCrash.instance.recordError(error, stackTrace);
     },
   );
@@ -99,8 +99,7 @@ class _MyAppState extends State<MyApp> {
                 child: Text(
                   'Test fatal Crash',
                   style: TextStyle(color: Colors.white),
-                )
-            ),
+                )),
           ],
         )),
       ),
