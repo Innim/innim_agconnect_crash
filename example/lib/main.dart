@@ -17,15 +17,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:agconnect_crash/agconnect_crash.dart';
+import 'package:innim_agconnect_crash/innim_agconnect_crash.dart';
 
 void main() {
   FlutterError.onError = AGCCrash.instance.onFlutterError;
-  runZoned<Future<void>>(
+  runZonedGuarded<Future<void>>(
     () async {
       runApp(MyApp());
     },
-    onError: (dynamic error, StackTrace stackTrace) {
+    (Object error, StackTrace stackTrace) {
       AGCCrash.instance.recordError(error, stackTrace);
     },
   );

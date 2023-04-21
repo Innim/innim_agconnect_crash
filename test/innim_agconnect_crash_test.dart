@@ -16,16 +16,14 @@
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:agconnect_crash/agconnect_crash.dart';
-
+import 'package:innim_agconnect_crash/innim_agconnect_crash.dart';
 
 void main() {
-
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('crash test', () {
     const MethodChannel channel = MethodChannel('com.huawei.flutter/agconnect_crash');
-    MethodCall mockCall;
+    MethodCall? mockCall;
     setUp(() {
       channel.setMockMethodCallHandler((MethodCall methodCall) async {
         mockCall = methodCall;
@@ -52,63 +50,62 @@ void main() {
 
     test('testIt', () async {
       await AGCCrash.instance.testIt();
-      expect(mockCall.method, 'testIt');
-      expect(mockCall.arguments, null);
+      expect(mockCall!.method, 'testIt');
+      expect(mockCall!.arguments, null);
     });
 
     test('enableCrashCollection', () async {
       await AGCCrash.instance.enableCrashCollection(true);
-      expect(mockCall.method, 'enableCrashCollection');
-      expect(mockCall.arguments['enable'], true);
+      expect(mockCall!.method, 'enableCrashCollection');
+      expect(mockCall!.arguments['enable'], true);
     });
 
     test('setUserId', () async {
       await AGCCrash.instance.setUserId('testUserId');
-      expect(mockCall.method, 'setUserId');
-      expect(mockCall.arguments['userId'], 'testUserId');
+      expect(mockCall!.method, 'setUserId');
+      expect(mockCall!.arguments['userId'], 'testUserId');
     });
 
     test('setCustomKey', () async {
       await AGCCrash.instance.setCustomKey('testKey', 'testValue');
-      expect(mockCall.method, 'setCustomKey');
-      expect(mockCall.arguments['key'], 'testKey');
-      expect(mockCall.arguments['value'], 'testValue');
+      expect(mockCall!.method, 'setCustomKey');
+      expect(mockCall!.arguments['key'], 'testKey');
+      expect(mockCall!.arguments['value'], 'testValue');
     });
 
     test('setCustomKey with bool', () async {
       await AGCCrash.instance.setCustomKey('testKey', true);
-      expect(mockCall.method, 'setCustomKey');
-      expect(mockCall.arguments['key'], 'testKey');
-      expect(mockCall.arguments['value'], 'true');
+      expect(mockCall!.method, 'setCustomKey');
+      expect(mockCall!.arguments['key'], 'testKey');
+      expect(mockCall!.arguments['value'], 'true');
     });
 
     test('setCustomKey with int', () async {
       await AGCCrash.instance.setCustomKey('testKey', 123);
-      expect(mockCall.method, 'setCustomKey');
-      expect(mockCall.arguments['key'], 'testKey');
-      expect(mockCall.arguments['value'], '123');
+      expect(mockCall!.method, 'setCustomKey');
+      expect(mockCall!.arguments['key'], 'testKey');
+      expect(mockCall!.arguments['value'], '123');
     });
 
     test('setCustomKey with null', () async {
       await AGCCrash.instance.setCustomKey('testKey', null);
-      expect(mockCall.method, 'setCustomKey');
-      expect(mockCall.arguments['key'], 'testKey');
-      expect(mockCall.arguments['value'], 'null');
+      expect(mockCall!.method, 'setCustomKey');
+      expect(mockCall!.arguments['key'], 'testKey');
+      expect(mockCall!.arguments['value'], 'null');
     });
 
     test('log', () async {
       await AGCCrash.instance.log(message: 'testlog');
-      expect(mockCall.method, 'customLog');
-      expect(mockCall.arguments['level'], 1);
-      expect(mockCall.arguments['message'], 'testlog');
+      expect(mockCall!.method, 'customLog');
+      expect(mockCall!.arguments['level'], 1);
+      expect(mockCall!.arguments['message'], 'testlog');
     });
 
     test('log with error', () async {
       await AGCCrash.instance.log(level: LogLevel.error, message: 'testlog');
-      expect(mockCall.method, 'customLog');
-      expect(mockCall.arguments['level'], 3);
-      expect(mockCall.arguments['message'], 'testlog');
+      expect(mockCall!.method, 'customLog');
+      expect(mockCall!.arguments['level'], 3);
+      expect(mockCall!.arguments['message'], 'testlog');
     });
   });
-
 }

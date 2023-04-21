@@ -1,3 +1,5 @@
+This package is a fork [agconnect_crash](https://pub.dev/packages/agconnect_crash) with Null-safety support.
+
 # AppGallery Connect Crash for Flutter
 
 ## Introduction
@@ -6,8 +8,8 @@ The AppGallery Connect Crash service provides a powerful yet lightweight solutio
 [Learn More](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-crash-introduction)
 
 ## Installing the Plug-in
-Add dependencies to the pubspec.yaml file of the Flutter project. 
-agconnect_crash: ^1.2.0
+Add dependencies to the pubspec.yaml file of the Flutter project.
+innim_agconnect_crash: ^1.7.0
 Run the following command on the Terminal page or click Pub get in Android Studio to add dependencies.
 flutter pub get
 For more details, please refer to [Getting Started with Flutter](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started-flutter)

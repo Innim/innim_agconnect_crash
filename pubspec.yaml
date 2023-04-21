@@ -1,11 +1,12 @@
-name: agconnect_crash
+name: innim_agconnect_crash
 description: Flutter plugin for AppGallery Connect Crash SDK.
-version: 1.6.0+300
+version: 1.7.0
 homepage: https://developer.huawei.com/consumer/cn/doc/development/AppGallery-connect-Guides/agc-crash-introduction
+repository: https://github.com/Innim/innim_agconnect_crash
+issue_tracker: https://github.com/Innim/innim_agconnect_crash_facebook/issues
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.10.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:

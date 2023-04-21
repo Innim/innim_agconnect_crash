@@ -34,9 +34,9 @@ class AGCCrash {
     recordError(details.exceptionAsString(), details.stack);
   }
 
-  Future<void> recordError(dynamic exception, StackTrace stack, { bool fatal = false}) async {
+  Future<void> recordError(dynamic exception, StackTrace? stack, { bool fatal = false}) async {
     assert(exception != null);
-    stack ??= StackTrace.current ?? StackTrace.fromString('');
+    stack ??= StackTrace.current;
     print('Error caught by AGCCrash : ${exception.toString()} \n${stack.toString()}');
     await _channel.invokeMethod('recordError', <String, String>{
       'reason': exception.toString(),
@@ -61,7 +61,6 @@ class AGCCrash {
 
   /// 设置自定义用户标识符
   Future<void> setUserId(String userId) {
-    assert(userId != null);
     return _channel.invokeMethod('setUserId', <String, String>{
       'userId': userId,
     });
@@ -69,7 +68,6 @@ class AGCCrash {
 
   /// 添加自定义键值对
   Future<void> setCustomKey(String key, dynamic value) {
-    assert(key != null);
     return _channel.invokeMethod('setCustomKey', <String, String>{
       'key': key,
       'value': value.toString()
@@ -78,8 +76,7 @@ class AGCCrash {
 
   /// 添加自定义日志
   Future<void> log(
-      {LogLevel level = LogLevel.info, @required String message}) {
-    assert(message != null);
+      {LogLevel level = LogLevel.info, required String message}) {
     return _channel.invokeMethod(
         'customLog', <String, dynamic>{'level': level.index, 'message': message});
   }
