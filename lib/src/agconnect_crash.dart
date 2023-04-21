@@ -24,8 +24,7 @@ enum LogLevel { debug, info, warning, error }
 
 /// 崩溃收集服务入口类
 class AGCCrash {
-  static const MethodChannel _channel =
-      const MethodChannel('com.huawei.flutter/agconnect_crash');
+  static const MethodChannel _channel = const MethodChannel('com.huawei.flutter/agconnect_crash');
 
   /// 获取AGCCrash实例
   static final AGCCrash instance = AGCCrash();
@@ -35,16 +34,14 @@ class AGCCrash {
     recordError(details.exceptionAsString(), details.stack);
   }
 
-  Future<void> recordError(dynamic exception, StackTrace? stack,
-      {bool fatal = false}) async {
+  Future<void> recordError(dynamic exception, StackTrace? stack, { bool fatal = false}) async {
     assert(exception != null);
     stack ??= StackTrace.current;
-    print(
-        'Error caught by AGCCrash : ${exception.toString()} \n${stack.toString()}');
+    print('Error caught by AGCCrash : ${exception.toString()} \n${stack.toString()}');
     await _channel.invokeMethod('recordError', <String, String>{
       'reason': exception.toString(),
-      'stack': stack.toString(),
-      'fatal': fatal.toString(),
+      'stack':stack.toString(),
+      'fatal':fatal.toString(),
     });
     return;
   }
@@ -64,6 +61,7 @@ class AGCCrash {
 
   /// 设置自定义用户标识符
   Future<void> setUserId(String userId) {
+    assert(userId != null);
     return _channel.invokeMethod('setUserId', <String, String>{
       'userId': userId,
     });
@@ -71,13 +69,16 @@ class AGCCrash {
 
   /// 添加自定义键值对
   Future<void> setCustomKey(String key, dynamic value) {
-    return _channel.invokeMethod('setCustomKey',
-        <String, String>{'key': key, 'value': value.toString()});
+    return _channel.invokeMethod('setCustomKey', <String, String>{
+      'key': key,
+      'value': value.toString()
+    });
   }
 
   /// 添加自定义日志
-  Future<void> log({LogLevel level = LogLevel.info, required String message}) {
-    return _channel.invokeMethod('customLog',
-        <String, dynamic>{'level': level.index, 'message': message});
+  Future<void> log(
+      {LogLevel level = LogLevel.info, required String message}) {
+    return _channel.invokeMethod(
+        'customLog', <String, dynamic>{'level': level.index, 'message': message});
   }
 }
