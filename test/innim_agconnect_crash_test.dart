@@ -22,8 +22,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('crash test', () {
-    const MethodChannel channel =
-        MethodChannel('com.huawei.flutter/agconnect_crash');
+    const MethodChannel channel = MethodChannel('com.huawei.flutter/agconnect_crash');
     MethodCall? mockCall;
     setUp(() {
       channel.setMockMethodCallHandler((MethodCall methodCall) async {
@@ -40,8 +39,7 @@ void main() {
           case 'customLog':
             return null;
         }
-        throw PlatformException(
-            code: '0', message: 'Unknown method call, please update test.');
+        throw PlatformException(code: '0', message: 'Unknown method call, please update test.');
       });
       mockCall = null;
     });
