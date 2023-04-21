@@ -69,41 +69,40 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              MaterialButton(
-                  onPressed: _enableCollection,
-                  color: Colors.blue,
-                  child: Text(
-                    'Enable Crash Collection',
-                    style: TextStyle(color: Colors.white),
-                  )),
-              MaterialButton(
-                  onPressed: _disableCollection,
-                  color: Colors.blue,
-                  child: Text(
-                    'Disable Crash Collection',
-                    style: TextStyle(color: Colors.white),
-                  )),
-              MaterialButton(
-                  onPressed: _testCrash,
-                  color: Colors.blue,
-                  child: Text(
-                    'Test Crash',
-                    style: TextStyle(color: Colors.white),
-                  )),
-              MaterialButton(
-                onPressed: _testFatalCrash,
-                color: Colors.blue,
-                child: Text(
-                  'Test fatal Crash',
-                  style: TextStyle(color: Colors.white),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                MaterialButton(
+                    onPressed: _enableCollection,
+                    color: Colors.blue,
+                    child: Text(
+                      'Enable Crash Collection',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                MaterialButton(
+                    onPressed: _disableCollection,
+                    color: Colors.blue,
+                    child: Text(
+                      'Disable Crash Collection',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                MaterialButton(
+                    onPressed: _testCrash,
+                    color: Colors.blue,
+                    child: Text(
+                      'Test Crash',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                MaterialButton(
+                    onPressed: _testFatalCrash,
+                    color: Colors.blue,
+                    child: Text(
+                      'Test fatal Crash',
+                      style: TextStyle(color: Colors.white),
+                    ),
                 ),
-              ),
-            ],
-          ),
-        ),
+              ],
+            )),
       ),
     );
   }
