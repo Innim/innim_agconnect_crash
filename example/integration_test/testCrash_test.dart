@@ -14,9 +14,19 @@
  * limitations under the License.
  */
 
-package example.android.app.src.main.java.com.huawei.agconnectcrashexample;
+import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
+import 'package:agconnect_crash_example/main.dart' as app;
 
-import io.flutter.embedding.android.FlutterActivity;
+void main() {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  testWidgets('Testing crash shows snackbar', (WidgetTester tester) async {
 
-public class MainActivity extends FlutterActivity {
+    // Build the widget that contains the ElevatedButton
+    app.main();
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Test Crash'));
+    await tester.pumpAndSettle();
+    expect(find.text('Test crash successful, check logs 💥'), findsOneWidget);
+  });
 }

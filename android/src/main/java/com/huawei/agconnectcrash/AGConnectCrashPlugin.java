@@ -1,5 +1,5 @@
 /*
- * Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+ * Copyright 2020-2023. Huawei Technologies Co., Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 public class AGConnectCrashPlugin implements FlutterPlugin, MethodCallHandler {
     private MethodChannel channel;
@@ -43,12 +42,6 @@ public class AGConnectCrashPlugin implements FlutterPlugin, MethodCallHandler {
         initAGConnectSDK(flutterPluginBinding.getApplicationContext());
         channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "com.huawei.flutter/agconnect_crash");
         channel.setMethodCallHandler(this);
-    }
-
-    public static void registerWith(Registrar registrar) {
-        initAGConnectSDK(registrar.context().getApplicationContext());
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "com.huawei.flutter/agconnect_crash");
-        channel.setMethodCallHandler(new AGConnectCrashPlugin());
     }
 
     static void initAGConnectSDK(Context context) {

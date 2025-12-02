@@ -14,9 +14,18 @@
  * limitations under the License.
  */
 
-package example.android.app.src.main.java.com.huawei.agconnectcrashexample;
+import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
+import 'package:agconnect_crash_example/main.dart' as app;
+void main() {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-import io.flutter.embedding.android.FlutterActivity;
-
-public class MainActivity extends FlutterActivity {
+  testWidgets('Testing fatal crash shows snackbar',
+          (WidgetTester tester) async {
+        app.main();
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Test fatal Crash'));
+        await tester.pumpAndSettle();
+        expect(find.text('Fatal crash successful, check logs 💥'), findsOneWidget);
+      });
 }
