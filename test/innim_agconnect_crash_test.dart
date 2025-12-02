@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 /*
  * Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
  *

@@ -4,19 +4,19 @@ version '1.0'
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven {url 'https://developer.huawei.com/repo/'}
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:3.5.4'
     }
 }
 
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven {url 'https://developer.huawei.com/repo/'}
     }
 }
@@ -24,19 +24,21 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 18
+        targetSdkVersion 30
     }
     lintOptions {
         disable 'InvalidPackage'
     }
     dependencies {
-        implementation  'com.huawei.agconnect:agconnect-crash:1.7.3.302'
+        implementation  'com.huawei.agconnect:agconnect-crash:1.9.1.301'
     }
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.annotation:annotation:1.5.0'
 }

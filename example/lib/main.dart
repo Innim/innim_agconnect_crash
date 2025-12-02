@@ -1,5 +1,5 @@
 /*
- * Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
+ * Copyright 2020-2023. Huawei Technologies Co., Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ void main() {
     () async {
       runApp(MyApp());
     },
-    (Object error, StackTrace stackTrace) {
+    (dynamic error, StackTrace stackTrace) {
       AGCCrash.instance.recordError(error, stackTrace);
     },
   );
@@ -55,55 +55,85 @@ class _MyAppState extends State<MyApp> {
 
   _testFatalCrash() async {
     try {
-      throw Exception('test exception fatal');
+      AGCCrash.instance.testIt();
     } catch (e, stack) {
       AGCCrash.instance.recordError(e, stack, fatal: true);
     }
   }
 
+  final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
+    elevation: 3,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(32.0),
+    ),
+    minimumSize: Size(180, 40),
+  );
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            MaterialButton(
-                onPressed: _enableCollection,
-                color: Colors.blue,
-                child: Text(
-                  'Enable Crash Collection',
-                  style: TextStyle(color: Colors.white),
-                )),
-            MaterialButton(
-                onPressed: _disableCollection,
-                color: Colors.blue,
-                child: Text(
-                  'Disable Crash Collection',
-                  style: TextStyle(color: Colors.white),
-                )),
-            MaterialButton(
-                onPressed: _testCrash,
-                color: Colors.blue,
-                child: Text(
-                  'Test Crash',
-                  style: TextStyle(color: Colors.white),
-                )),
-            MaterialButton(
-                onPressed: _testFatalCrash,
-                color: Colors.blue,
-                child: Text(
-                  'Test fatal Crash',
-                  style: TextStyle(color: Colors.white),
-                )
-            ),
-          ],
-        )),
-      ),
+      home: Builder(builder: (BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('AGC Crash Demo'),
+          ),
+          body: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ElevatedButton(
+                style: elevatedButtonStyle,
+                key: Key('Enable'),
+                onPressed: () {
+                  _enableCollection();
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    backgroundColor: Colors.orangeAccent,
+                    content: Text('Enabled Crash Collection'),
+                    duration: Duration(seconds: 3),
+                  ));
+                },
+                child: const Text('Enable Crash Collection'),
+              ),
+              ElevatedButton(
+                style: elevatedButtonStyle,
+                onPressed: () {
+                  _disableCollection();
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    backgroundColor: Colors.orangeAccent,
+                    content: Text('Disabled Crash Collection'),
+                    duration: Duration(seconds: 3),
+                  ));
+                },
+                child: const Text('Disable Crash Collection'),
+              ),
+              ElevatedButton(
+                style: elevatedButtonStyle,
+                onPressed: () {
+                  _testCrash();
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    backgroundColor: Colors.orangeAccent,
+                    content: Text('Test crash successful, check logs 💥'),
+                    duration: Duration(seconds: 3),
+                  ));
+                },
+                child: const Text('Test Crash'),
+              ),
+              ElevatedButton(
+                style: elevatedButtonStyle,
+                onPressed: () {
+                  _testFatalCrash();
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    backgroundColor: Colors.orangeAccent,
+                    content: Text('Fatal crash successful, check logs 💥'),
+                    duration: Duration(seconds: 3),
+                  ));
+                },
+                child: const Text('Test fatal Crash'),
+              ),
+            ],
+          )),
+        );
+      }),
     );
   }
 }

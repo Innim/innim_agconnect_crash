@@ -1,18 +1,16 @@
-# agconnect_crash_example
+# AGC Crash Demo
 
-Demonstrates how to use the agconnect_crash plugin.
+Demonstrages the usage of the agconnect_crash plugin.
 
-## Getting Started
+## Get Started with the Example
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Flutter Installation](https://docs.flutter.dev/get-started/install)
+Make sure you have Flutter installed your device
+Open up "example" folder with your IDE
+run `flutter pub get`
+configure your connection with App Gallery Connect
+[App Gallery Connect Configuration Guide](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-crash-obtain-files-0000001281093660)
+run `flutter run`
 
 For help getting started with the agconnect_crash plugin, view our development guide.
+[Learn More About Crash](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-crash-introduction-0000001055732708)

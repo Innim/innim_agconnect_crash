@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'agconnect_crash'
-  s.version          = '0.0.1'
+  s.version          = '1.9.1+301'
   s.summary          = 'A Flutter plugin for AGConnect Crash SDK.'
   s.description      = <<-DESC
 A Flutter plugin for AGConnect Crash SDK.
@@ -19,7 +19,7 @@ A Flutter plugin for AGConnect Crash SDK.
   s.platform = :ios, '8.0'
   s.static_framework = true
   
-  s.dependency 'AGConnectCrash', '1.7.2.300'
+  s.dependency 'AGConnectCrash', '1.9.1.301'
   s.dependency 'HiAnalytics'
 
   # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
